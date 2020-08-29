@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    @*  *@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>@ViewBag.Title - My ASP.NET Application</title>
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Styles.Render("~/Content/Site.css")
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            </ul>
+                    </div>
+                    @if (Session["username"]!= null) {
+                    <div style="color : white; float : right">
+                        <ul  class="nav navbar-nav">
+                            <li>Hii @Session["username"]</li>
+                            <li>@Html.ActionLink("LogOff", "Logout", "Users")</li>
+                        </ul>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>*@
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Home", "Index", "ProductDetails", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">All Pies <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Cakeese Pies", "Index", "Items")</li>
+                            <li>@Html.ActionLink("Fruit Pies", "Index2", "Items")</li>
+                            <li>@Html.ActionLink("Seasonal Pies", "", "")</li>
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("View AllPies", "", "Home")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Register", "Register", "Users")</li>
+                    <li>@Html.ActionLink("Login", "Index", "Users")</li>
+                </ul>
+                @if (Session["username"] != null)
+                {
+                <div style="color : white; float : right">
+                <ul class="nav navbar-nav">
+                    <li style="margin-top:15px">Welcome @Session["username"]</li>
+                    <li>@Html.ActionLink("Log Out", "Logout", "Users")</li>
+
+                </ul>
+            </div>}
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

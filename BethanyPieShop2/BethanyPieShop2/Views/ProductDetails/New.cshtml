@@ -1,0 +1,43 @@
+﻿@model BethanyPieShop2.ViewModel.ProDetailsAndCatagory
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Product</h2>
+@using (Html.BeginForm("Create", "ProductDetails"))
+{
+    <div class="form-group">
+        @Html.Label("Product Name")
+        @Html.TextBoxFor(c => c.ProductDetail.ProductName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Short Description")
+        @Html.TextBoxFor(m => m.ProductDetail.ShortDescription, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Type Of Pie")
+        @Html.DropDownListFor(c => c.ProductDetail.CatagoryId, new SelectList(Model.Catagories, "Id", "PieType"), " ", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Long Description")
+        @Html.TextBoxFor(m => m.ProductDetail.LongDescription, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Image")
+        @Html.TextBoxFor(v => v.ProductDetail.Image, new { @type = "file", @class = "form - control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Price")
+        @Html.TextBoxFor(c => c.ProductDetail.Price, new { @class = "form-control" })
+    </div>
+
+    @*@Html.HiddenFor(m => m.ProductDetail.ProductId)*@
+
+    <button type="submit" class="btn btn-primary">Insert</button>
+}
+

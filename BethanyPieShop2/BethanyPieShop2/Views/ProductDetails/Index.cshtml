@@ -1,0 +1,64 @@
+﻿
+
+@model IEnumerable<BethanyPieShop2.Models.ProductDetail>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section>
+    <div class="container" style="margin-top:20px">
+        <div class="mainContent">
+            <div class="row">
+                <div class="col-md-3">
+                    <aside class="leftmenu">
+                        <a href="index.html"><img src="~/Images/bethanylogo.png" /></a>
+                    </aside>
+                </div>
+                <div class="col-md-9">
+                    <article>
+                        <figure>
+                            <img src="~/Images/bethany-fullsize.jpg" width="850" alt="bethany in her pie shop" />
+                        </figure>
+
+                    </article>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-9">
+                    <div class="pie-label">Pies of the Week</div>
+                    <div class="small">Our weekly selection- just for you!</div>
+                    <div class="row cards-container">
+                        @foreach (var item in Model)
+                        {
+                    <div class="col-md-4" style="margin-bottom:5px;">
+                        <div class="card">
+                            <img class="card-img-top" src="~/@item.ImagePath" alt="Card image cap">
+                            <div class="card-body">
+                                <div class="row card-header">
+                                    <span class="card-title">
+                                        @Html.ActionLink(@item.ShortDescription, @item.ProductName, "ProductDetails", new { @class = "pie-header" })
+                                    </span>
+                                    <span class="card-value">@item.Price</span>
+                                </div>
+                                <p class="card-text">@item.LongDescription</p>
+                                @Html.ActionLink("Add to cart", "DetailsIndex", "Details", new { @class = "btn add-cart" })
+                                @*<a href="#" class="btn add-cart">Add to cart</a>*@
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

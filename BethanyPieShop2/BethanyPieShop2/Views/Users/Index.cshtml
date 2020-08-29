@@ -1,0 +1,59 @@
+﻿@model BethanyPieShop2.Models.Register
+
+@{ ViewBag.Title = "Index"; }
+@Html.Raw(ViewBag.Message)
+
+<div class="container login-container">
+    <div class="row" style="margin-top:45px">
+        <div class="col-md-3">
+            <aside class="leftmenu">
+                <a href="index.html"><img src="~/Images/bethanylogo.png" /></a>
+            </aside>
+        </div>
+        @using (Html.BeginForm("Index", "Users", FormMethod.Post))
+        {
+<div class="col-md-5" style="padding-left:50px;">
+    <h2>Log In</h2>
+    <div style="margin-bottom:8px;">
+        Use a local account to login!!
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(model => model.EmailId)</div>
+        <div>
+            @Html.TextBoxFor(model => model.EmailId, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(model => model.Password)</div>
+        <div>
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            <p class="text-danger">@ViewBag.ErrorMessage</p>
+        </div>
+    </div>
+    <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-login">Log In</button>
+    <div style="margin-top:25px">
+        <h6>Forgot your Password?</h6>
+        <h6>@Html.ActionLink("Register for a new user", "Register")</h6>
+        <h6>Resend email Confirmation</h6>
+    </div>
+</div>
+        }
+
+        <div class="col-md-4" style="margin-top:60px">
+            Use another service to log in
+            <p style="margin-top:30px">There are no external authentication services configured. 
+            See this article details on setting this ASP.net Application to support logging in via external services  </p>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
